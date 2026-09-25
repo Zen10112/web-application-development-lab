@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Khang — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container" style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+    <a href="#top" style="font-family:var(--font-display); font-weight:700; text-decoration:none;">Khang.dev</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+      <span class="theme-toggle__icon" aria-hidden="true">&#9789;</span>
+      <span class="theme-toggle__label">Dark</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <p class="hero__eyebrow">Software developer</p>
+        <h1 class="hero__title">I build reliable interfaces, not just pretty ones.</h1>
+        <p class="hero__pitch">Sinh viên Hệ thống thông tin tại UIT, tập trung vào frontend engineering — hiệu năng, khả năng truy cập, và mã nguồn dễ bảo trì.</p>
+        <div style="margin-top: var(--space-4); display:flex; gap: var(--space-2);">
+          <a class="btn btn--primary" href="#projects">Xem dự án</a>
+          <a class="btn" href="#contact">Liên hệ</a>
+        </div>
+      </div>
+      <img
+        class="hero__portrait"
+        src="https://placehold.co/640x800/17243d/e8ecf3?text=Portrait"
+        alt="Portrait of Khang"
+        width="640"
+        height="800"
+      />
+    </section>
+
+    <!-- SKILLS MATRIX -->
+    <section class="section" id="skills">
+      <h2 class="section__heading">Skills matrix</h2>
+      <div class="skills-matrix">
+        <div class="skills-group">
+          <h3>Languages</h3>
+          <ul class="badge-list" role="list">
+            <li class="badge">TypeScript</li>
+            <li class="badge">JavaScript</li>
+            <li class="badge">Python</li>
+          </ul>
+        </div>
+        <div class="skills-group">
+          <h3>Frontend</h3>
+          <ul class="badge-list" role="list">
+            <li class="badge">CSS Grid</li>
+            <li class="badge">Accessibility</li>
+            <li class="badge">Performance</li>
+          </ul>
+        </div>
+        <div class="skills-group">
+          <h3>Tooling</h3>
+          <ul class="badge-list" role="list">
+            <li class="badge">Git</li>
+            <li class="badge">DevTools</li>
+            <li class="badge">CI/CD</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT CARDS -->
+    <section class="section" id="projects">
+      <h2 class="section__heading">Projects</h2>
+      <div class="project-grid">
+
+        <article class="project-card" data-category="frontend">
+          <header class="project-card__header">
+            <h3>Distributed State Engine</h3>
+            <span class="badge">TypeScript</span>
+          </header>
+          <p>Lightweight event bus built without external libraries.</p>
+          <footer class="project-card__footer">
+            <a href="#" aria-label="View State Engine source code">Source code</a>
+          </footer>
+        </article>
+
+        <article class="project-card" data-category="frontend">
+          <header class="project-card__header">
+            <h3>Accessible Component Kit</h3>
+            <span class="badge">CSS</span>
+          </header>
+          <p>A set of WCAG 2.2 AA-compliant UI primitives with full keyboard support.</p>
+          <footer class="project-card__footer">
+            <a href="#" aria-label="View Component Kit source code">Source code</a>
+          </footer>
+        </article>
+
+        <article class="project-card" data-category="tooling">
+          <header class="project-card__header">
+            <h3>Commit Lint Bot</h3>
+            <span class="badge">Python</span>
+          </header>
+          <p>CI script that enforces conventional-commit messages on pull requests.</p>
+          <footer class="project-card__footer">
+            <a href="#" aria-label="View Commit Lint Bot source code">Source code</a>
+          </footer>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="section" id="contact">
+      <h2 class="section__heading">Get in touch</h2>
+      <form class="contact-form" data-contact-form novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button class="btn btn--primary" type="submit" style="justify-self:start;">Send message</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Khang. Built with plain HTML, CSS &amp; JS.</p>
+</footer>
+
+<script src="js/theme.js" defer></script>
+<script src="js/forms.js" defer></script>
+</body>
+</html>
