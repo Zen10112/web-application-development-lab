@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3: Resilient Component Architecture</title>
+    
+    <!-- Nhúng các file CSS của từng Sub-task -->
+    <link rel="stylesheet" href="skeleton.css">
+    <link rel="stylesheet" href="live-data.css">
+    <link rel="stylesheet" href="states.css">
+    
+    <style>
+        /* CSS tổng thể cho trang Portfolio / Lab Exercise */
+        body {
+            background-color: #0b0f19;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        header h1 {
+            font-size: 1.75rem;
+            color: #38bdf8;
+            border-bottom: 2px solid #1e293b;
+            padding-bottom: 12px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .section-card {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title span {
+            font-size: 0.75rem;
+            background-color: #1e293b;
+            color: #38bdf8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid #334155;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Tiêu đề chung -->
+        <header>
+            <h1>Exercise 3: Resilient Component Architecture</h1>
+            <p>Trang tổng hợp các trạng thái giao diện (Loading, Live Data, Empty, Error) cho Lab 1.</p>
+        </header>
+
+        <!-- SUB-TASK T-03A: Loading Skeleton -->
+        <section class="section-card">
+            <h2 class="section-title">Sub-task T-03A <span>Loading Skeleton</span></h2>
+            <div class="skeleton-item" style="max-width: 400px;"></div>
+        </section>
+
+        <!-- SUB-TASK T-03B: Live Data State -->
+        <section class="section-card">
+            <h2 class="section-title">Sub-task T-03B <span>Live Data State</span></h2>
+            
+            <div class="live-data-container">
+              <!-- Metadata Badges (Flexbox) -->
+              <div class="metadata-badges">
+                <span class="badge badge-status">
+                  <span class="dot"></span> Trực tuyến
+                </span>
+                <span class="badge badge-info">Phiên bản: v1.2.4</span>
+                <span class="badge badge-metric">Tải CPU: 32%</span>
+              </div>
+
+              <!-- Live Data Grid List -->
+              <div class="data-grid">
+                <div class="data-card">
+                  <div class="card-header">
+                    <h4>Thành phần A</h4>
+                    <span class="status-pill active">Hoạt động</span>
+                  </div>
+                  <p class="card-desc">Đồng bộ hóa dữ liệu thời gian thực qua WebSockets.</p>
+                  <div class="card-footer">
+                    <span class="timestamp">Cập nhật: Vừa xong</span>
+                  </div>
+                </div>
+
+                <div class="data-card">
+                  <div class="card-header">
+                    <h4>Thành phần B</h4>
+                    <span class="status-pill active">Hoạt động</span>
+                  </div>
+                  <p class="card-desc">Kiểm tra trạng thái bộ nhớ đệm và hàng đợi tác vụ.</p>
+                  <div class="card-footer">
+                    <span class="timestamp">Cập nhật: 2 phút trước</span>
+                  </div>
+                </div>
+
+                <div class="data-card">
+                  <div class="card-header">
+                    <h4>Thành phần C</h4>
+                    <span class="status-pill warning">Đang xử lý</span>
+                  </div>
+                  <p class="card-desc">Đang tiến hành tổng hợp số liệu phân tích định kỳ.</p>
+                  <div class="card-footer">
+                    <span class="timestamp">Cập nhật: 5 phút trước</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+
+        <!-- SUB-TASK T-03C: Empty & Error States -->
+        <section class="section-card">
+            <h2 class="section-title">Sub-task T-03C <span>Empty & Error States</span></h2>
+            
+            <div class="states-container" style="padding: 0; background: transparent;">
+              <!-- 1. Empty State -->
+              <div class="state-card empty-state">
+                <div class="state-icon" aria-hidden="true">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 13V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7m16 0v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5m16 0h-2.586a1 1 0 0 0-.707.293l-2.414 2.414a1 1 0 0 1-.707.293h-3.172a1 1 0 0 1-.707-.293l-2.414-2.414A1 1 0 0 0 6.586 13H4"></path>
+                  </svg>
+                </div>
+                <h3>Không có dữ liệu</h3>
+                <p>Hiện tại chưa có bản ghi nào trong hệ thống. Dữ liệu mới sẽ xuất hiện ở đây khi có cập nhật.</p>
+              </div>
+
+              <!-- 2. Error State -->
+              <div class="state-card error-state" role="alert" aria-live="polite">
+                <div class="state-icon error" aria-hidden="true">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                </div>
+                <h3>Đã xảy ra lỗi</h3>
+                <p>Không thể kết nối để tải dữ liệu. Vui lòng kiểm tra lại đường truyền của bạn.</p>
+                <!-- Accessible Retry Trigger -->
+                <button type="button" class="retry-btn" aria-label="Thử lại kết nối tải dữ liệu">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 4v6h-6"></path>
+                    <path d="M1 20v-6h6"></path>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                  Thử lại
+                </button>
+              </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

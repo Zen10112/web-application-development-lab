@@ -1,0 +1,59 @@
+/* ==========================================================================
+   T-03A: LOADING SKELETON
+   git commit -m "feat(css): skeleton"
+   ========================================================================== */
+
+/* Container: chỉ hiển thị khi data-state="loading" (xem quy tắc ở mục 5
+   của TASK_DECOMPOSITION.md — JS chỉ đổi data-state, CSS quyết định hiển thị) */
+.data-list[data-state="loading"] .state-success,
+.data-list[data-state="loading"] .state-empty,
+.data-list[data-state="loading"] .state-error {
+  display: none;
+}
+
+.data-list:not([data-state="loading"]) .state-loading {
+  display: none;
+}
+
+.state-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Mỗi khối skeleton mô phỏng 1 dòng dữ liệu sẽ xuất hiện sau này.
+   Cố định height 48px để khi chuyển sang state "success" (dữ liệu thật),
+   không xảy ra layout shift (CLS = 0). */
+.skeleton-item {
+  height: 48px;
+  border-radius: 6px;
+
+  /* Gradient 3 điểm dừng màu, dùng cho hiệu ứng ánh sáng chạy ngang */
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+
+  /* Kích thước nền rộng gấp đôi khối, để có chỗ cho animation "trượt" */
+  background-size: 200% 100%;
+
+  animation: shimmer 1.5s infinite;
+}
+
+/* Chuyển động: từ vị trí nền 200% 0 (dải sáng ở bên phải, ngoài khung nhìn)
+   trượt sang -200% 0 (dải sáng ra khỏi bên trái) -> tạo cảm giác ánh sáng
+   quét liên tục qua khối, báo hiệu "đang tải". */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Người dùng bật "giảm chuyển động" trong hệ điều hành -> tắt animation,
+   giữ nguyên trạng thái tĩnh thay vì ép chạy hiệu ứng. */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-item {
+    animation: none;
+    background: #1e293b;
+  }
+}

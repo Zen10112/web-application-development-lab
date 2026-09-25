@@ -1,0 +1,82 @@
+/* Container tổng cho các trạng thái */
+.states-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 24px;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+/* Khung trạng thái chung */
+.state-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon minh họa */
+.state-icon {
+  color: #64748b;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.state-icon.error {
+  color: #f87171;
+}
+
+/* Tiêu đề và mô tả */
+.state-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.state-card p {
+  margin: 0 0 20px 0;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+/* Nút Retry (Accessible Trigger) */
+.retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.retry-btn:hover {
+  background-color: #2563eb;
+}
+
+.retry-btn:active {
+  transform: scale(0.98);
+}
+
+/* Đảm bảo khả năng tiếp cận (Accessibility - Focus State rõ ràng) */
+.retry-btn:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
