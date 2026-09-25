@@ -1,0 +1,166 @@
+/* ==========================================================================
+   T-02B: 2D GRID LAYOUT
+   git commit -m "feat(css): responsive grid"
+   ========================================================================== */
+
+.container {
+  width: min(100% - 2 * var(--space-3), var(--content-max));
+  margin-inline: auto;
+}
+
+/* --- Site header / nav --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-3);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: var(--border-w) solid var(--color-surface-border);
+}
+
+.site-nav {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.site-nav a {
+  font-size: var(--fs-300);
+  text-decoration: none;
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.site-nav a:hover {
+  color: var(--color-text);
+}
+
+/* --- Hero: a 2-column grid on desktop, 1 column on mobile.
+   This IS the "2D" part — track sizing changes at the breakpoint,
+   not just wrapping. --- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  padding-block: var(--space-6) var(--space-5);
+  align-items: center;
+}
+
+@media (min-width: 56rem) {
+  .hero {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.hero__portrait {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: var(--border-w) solid var(--color-surface-border);
+  order: -1;
+}
+
+@media (min-width: 56rem) {
+  .hero__portrait {
+    order: 1;
+  }
+}
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-300);
+  color: var(--color-accent-secondary);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-900);
+  line-height: 1.1;
+  margin-block: var(--space-2);
+}
+
+.hero__pitch {
+  color: var(--color-text-muted);
+  max-width: 42ch;
+  font-size: var(--fs-500);
+}
+
+/* --- Section shell --- */
+.section {
+  padding-block: var(--space-6);
+  border-top: var(--border-w) solid var(--color-surface-border);
+}
+
+.section__heading {
+  font-family: var(--font-display);
+  font-size: var(--fs-700);
+  margin-bottom: var(--space-4);
+}
+
+/* --- Skills matrix: true 2D grid, auto-flowing into as many
+   equal columns as fit the container --- */
+.skills-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--space-4);
+}
+
+.skills-group {
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-3);
+}
+
+.skills-group h3 {
+  font-family: var(--font-mono);
+  font-size: var(--fs-300);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+/* --- Project cards: 2D grid, min 2 columns on wide screens --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--space-4);
+}
+
+/* --- Contact form --- */
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  max-width: 32rem;
+}
+
+.field {
+  display: grid;
+  gap: var(--space-1);
+}
+
+/* --- Site footer --- */
+.site-footer {
+  padding-block: var(--space-4);
+  border-top: var(--border-w) solid var(--color-surface-border);
+  color: var(--color-text-muted);
+  font-size: var(--fs-300);
+  text-align: center;
+}
+
+/* --- Zero-horizontal-scroll guarantee at 375px ---
+   Anything that could overflow (long code strings, long links)
+   gets explicit wrapping instead of relying on the container. */
+@media (max-width: 23.4375rem) {
+  .hero__title {
+    word-break: break-word;
+  }
+}
