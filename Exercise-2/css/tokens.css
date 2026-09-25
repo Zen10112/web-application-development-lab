@@ -1,0 +1,152 @@
+/* ==========================================================================
+   T-02A: TOKENS & RESET
+   git commit -m "feat(css): tokens & reset"
+   ========================================================================== */
+
+/* --- Design tokens (dark theme = default) --- */
+:root {
+  /* Color: raw palette */
+  --navy-950: #0b1220;
+  --navy-900: #101a2e;
+  --navy-800: #17243d;
+  --ink-100: #e8ecf3;
+  --ink-300: #aab4c8;
+  --amber-500: #e8a33d;
+  --amber-400: #f2b45c;
+  --teal-400: #4fd1c5;
+  --red-500: #ef5b5b;
+
+  /* Color: semantic roles (this is what components reference) */
+  --color-bg: var(--navy-950);
+  --color-surface: var(--navy-900);
+  --color-surface-border: var(--navy-800);
+  --color-text: var(--ink-100);
+  --color-text-muted: var(--ink-300);
+  --color-accent: var(--amber-500);
+  --color-accent-hover: var(--amber-400);
+  --color-accent-secondary: var(--teal-400);
+  --color-danger: var(--red-500);
+  --color-focus-ring: var(--teal-400);
+
+  /* Type */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --fs-900: clamp(2.25rem, 1.9rem + 1.6vw, 3.25rem);
+  --fs-700: clamp(1.5rem, 1.35rem + 0.6vw, 1.875rem);
+  --fs-500: 1.125rem;
+  --fs-400: 1rem;
+  --fs-300: 0.875rem;
+
+  /* Space (8px base scale) */
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+
+  /* Layout */
+  --content-max: 72rem;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --border-w: 1px;
+
+  /* Motion */
+  --transition-fast: 160ms ease;
+  --transition-theme: 220ms ease;
+}
+
+/* --- Light theme override ---
+   Toggled by JS via data-theme="light" on <html> (see theme.js, T-02C).
+   No new rules elsewhere in the codebase should reference raw hex —
+   everything repaints automatically because components only read the
+   semantic variables above. */
+:root[data-theme="light"] {
+  --color-bg: #f5f3ee;
+  --color-surface: #ffffff;
+  --color-surface-border: #ded8ca;
+  --color-text: #1b1f27;
+  --color-text-muted: #5a5f6b;
+  --color-accent: #b9770e;
+  --color-accent-hover: #a06909;
+  --color-focus-ring: #0f766e;
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: var(--fs-400);
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+  transition: background-color var(--transition-theme), color var(--transition-theme);
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+a {
+  color: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Visible keyboard focus everywhere — required by the accessibility
+   acceptance criteria (full keyboard Tab & Enter flow). */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
